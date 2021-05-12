@@ -1,0 +1,7 @@
+export OS_AUTH_URL=google.com
+export OS_IDENTITY_API_VERSION=3
+export OS_PROJECT_NAME=patty
+export OS_PROJECT_DOMAIN_NAME=google
+export OS_USERNAME=patw
+export OS_USER_DOMAIN_NAME=pw@google
+export OS_PASSWORD=root

@@ -13,6 +13,30 @@ for x in vendors:
     if x not in approved_vendors:
         print("UNAUTHORIZED VENDOR!", end="")
 print("\nend of loop")
-for x in farms:
-    print(x,end="")
+#for x in farms:
+   # print(x,end="")
 
+for values  in farms:
+    if values["name"]=="NE Farm":
+        print(values["agriculture"])
+   
+
+farm_pick =input("pick NE Farm, SE Farm, or W Farm")
+
+for values in farms:
+    if values["name"]== farm_pick:
+        print(values["agriculture"])
+
+
+bad_list =["carrots","veggies", "celery"]
+farm_pick2 =input("pick NE Farm, SE Farm, or W Farm")
+
+for values in farms:
+    if values["name"] == farm_pick2:
+        for x in values["agriculture"]:
+            if x not in bad_list:
+                 print(x)
+
+
+    
+    

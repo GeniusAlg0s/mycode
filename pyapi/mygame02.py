@@ -10,6 +10,7 @@ RPG Game
 Commands:
   go [direction]
   get [item]
+  teleport [rooms{hall,kitchen,dining room, garden, pantry}]
 ''')
 
 def showStatus():
@@ -20,7 +21,8 @@ def showStatus():
   print('Inventory : ' + str(inventory))
   #print an item if there is one
   if "item" in rooms[currentRoom]:
-    print('You see a ' + rooms[currentRoom]['item'])
+      #the + was changed to + to allow more then one item in a room
+    print('You see a ' , rooms[currentRoom]['item'])
   print("---------------------------")
 
 #an inventory, which is initially empty
@@ -43,7 +45,7 @@ rooms = {
             'Dining Room' : {
                   'west' : 'Hall',
                   'south': 'Garden',
-                  'item' : 'potion',
+                  'item' : ['potion','sword'],
                   'north' : 'Pantry',
                },
             'Garden' : {
@@ -51,7 +53,7 @@ rooms = {
                },
             'Pantry' : {
                   'south' : 'Dining Room',
-                  'item' : 'cookie',
+                  'item' : ['cookie','milk'],
             }
          }
 
@@ -107,7 +109,10 @@ while True:
       #display a helpful message
       print(move[1] + ' got!')
       #delete the item from the room
-      del rooms[currentRoom]['item']
+      #del rooms[currentRoom]['item']
+
+      #NEW DELETE- instead of del use the remove method to take away that item
+      rooms[currentRoom]['item'].remove(move[1])
     #otherwise, if the item isn't there to get
     else:
       #tell them they can't get it

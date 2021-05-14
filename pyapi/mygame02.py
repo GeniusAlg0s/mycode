@@ -50,7 +50,7 @@ rooms = {
             'Hall' : {
                   'south' : 'Kitchen',
                   'east'  : 'Dining Room',
-                  'item'  : 'key'
+                  'item'  : ['key']
                 },
 
             'Kitchen' : {
@@ -61,15 +61,25 @@ rooms = {
                   'west' : 'Hall',
                   'south': 'Garden',
                   'item' : ['potion','sword'],
-                  'north' : 'Pantry',
+                  'north': 'Pantry',
+                  'east' : 'Trap Door',
                },
+            'Trap Door' : {
+                  'south' : 'Field'
+                },
             'Garden' : {
-                  'north' : 'Dining Room'
+                  'north' : 'Dining Room',
+                  'east'  : 'Field',
+                  'item'  : ['pale'],
                },
             'Pantry' : {
                   'south' : 'Dining Room',
                   'item' : ['cookie','milk'],
-            }
+               },
+            'Field' : {
+                  'west' :'Garden',
+                  'item' :['cow'],
+               }, 
          }
 
 #start the player in the Hall

@@ -2,6 +2,21 @@
 
 # Replace RPG starter project with this code when new instructions are live
 
+#riddle
+def riddle():
+    print("answer correctly only one try  and recieve a game changing prize")
+    print("what is always coming but never arrives")
+    answer = input("? :")
+    if answer.lower()  == "tomorrow":
+        print("correct takes some spoiled monster juice")
+        inventory.append("juice")
+        answered = 1
+    else:
+        print("you have failed play on")
+        answered = 1
+        
+
+
 def showInstructions():
   #print a main menu and the commands
   print('''
@@ -62,9 +77,13 @@ currentRoom = 'Hall'
 
 showInstructions()
 
+answered = 0
 #loop forever
 while True:
-
+  while answered == 0:
+        riddle()
+        answered = 1
+    
   showStatus()
 
   #get the player's next 'move'
@@ -122,7 +141,14 @@ while True:
   if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
     print('You escaped the house with the ultra rare key and magic potion... YOU WIN!')
     break
-
+  elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item'] and 'juice' in inventory:
+      print("there is the monster in the room ....you drank the juice it teleported you back to hall. YOU WILL NOT BE SAVED TWICE!!")
+      inventory.remove("juice")
+      currentRoom = 'Hall'
+      continue
+  elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item'] and 'milk' in inventory:
+      print("the monster took the milk it was stale from siiting out the monster has died! YOU Win!!")
+      break
   ## If a player enters a room with a monster
   elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
     print('A monster has got you... GAME OVER!')

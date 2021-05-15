@@ -70,7 +70,7 @@ rooms = {
             'Garden' : {
                   'north' : 'Dining Room',
                   'east'  : 'Field',
-                  'item'  : ['pale'],
+                  'item'  : ['shovel','pale'],
                },
             'Pantry' : {
                   'south' : 'Dining Room',
@@ -151,14 +151,18 @@ while True:
   if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
     print('You escaped the house with the ultra rare key and magic potion... YOU WIN!')
     break
+  elif currentRoom == 'Field'and 'pale'in inventory:
+      print("milking the cow heres some stale milk from a stale cow")
+      inventory.remove("pale")
+      inventory.append("milk")
+  elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item'] and 'milk' in inventory:
+      print("the monster took the milk it was stale from siiting out the monster has died! YOU Win!!")
+      break
   elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item'] and 'juice' in inventory:
       print("there is the monster in the room ....you drank the juice it teleported you back to hall. YOU WILL NOT BE SAVED TWICE!!")
       inventory.remove("juice")
       currentRoom = 'Hall'
       continue
-  elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item'] and 'milk' in inventory:
-      print("the monster took the milk it was stale from siiting out the monster has died! YOU Win!!")
-      break
   ## If a player enters a room with a monster
   elif 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
     print('A monster has got you... GAME OVER!')
